@@ -1,28 +1,18 @@
 <div class='row'>
- <div class='col-xs-3'>
-  <h2>User info</h2>
-  <%= render 'users/profile', user: current_user %>
-  <!--メモ　右側の指定に注意。そこを間違えるとエラーが発生して表示されない -->
-
-  <h2>New book</h2>
-  <%= render 'books/newform', book: @book %>
- </div>
-
-
 	<div class='col-xs-9'>
-	<h2>Users</h2>
+	<h2>Follow Users</h2>
 	<!--users一覧 -->
 	<table class="table">
 		<thead>
 			<tr>
 				<th>image</th>
 				<th>name</th>
-				<th colspan="7"></th>
+				<th colspan="6"></th>
 			</tr>
 		</thead>
 
 		<tbody>
-			<% @users.each do |user| %>
+			<% @user.followings.each do |user| %><!-- このuserには -->
 			<tr>
 				<td><%= attachment_image_tag(user, :profile_image, :fill, 40, 40, fallback: "no-image-mini.jpg") %></td>
 				<td><%= user.name%></td>
@@ -49,5 +39,3 @@
 	</table>
  </div>
 </div>
-<!--users一覧 -->
-
