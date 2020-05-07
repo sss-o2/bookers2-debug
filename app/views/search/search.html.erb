@@ -1,29 +1,7 @@
-<% if @model == 'user'%>
-
-<div class='row'>
- <div class='col-xs-3'>
-  <h2>User info</h2>
-  <%= render 'users/profile', user: current_user %>
-  <!--メモ　右側の指定に注意。そこを間違えるとエラーが発生して表示されない -->
-
-  <h2>New book</h2>
-  <%= render 'books/newform', book: @book %>
- </div>
-
-<%= render 'users/index' %>
-
-<% elsif @model == 'book'%>
-<div class="row">
-    <div class="col-xs-3">
-
-        <h2>User info</h2>
-        <%= render 'users/profile', user: current_user %>
-        <!--メモ　右側の指定に注意。そこを間違えるとエラーが発生して表示されない -->
-
-        <h2>New book</h2>
-        <%= render 'books/newform', book: @booknew %>
-
-    </div>
-    <%= render 'books/index' %>
-
+<% if @model == 'user' %>
+  <h2>Users</h2>
+  <%= render 'users/index', users: @datas %>
+<% else @model == 'book' %>
+  <h2>Books</h2>
+    <%= render 'books/index', books: @datas %>
 <% end %>

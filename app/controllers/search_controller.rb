@@ -1,20 +1,11 @@
 class SearchController < ApplicationController
+  before_action :authenticate_user!
+
   def search
     @model = params["search"]["model"]
     @content = params["search"]["content"]
     @how = params["search"]["how"]
     @datas = search_for(@how, @model, @content)
-
-    if @model=='user'
-    	@book = Book.new
-    	@user = current_user
-    	@users=@datas
-    	render 'users/index'
-    elsif @model=='book'
-    	@booknew=Book.new
-    	@books=@datas
-    	render 'books/index'
-    end
   end
 
   private
